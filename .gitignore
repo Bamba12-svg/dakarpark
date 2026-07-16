@@ -1,0 +1,25 @@
+# Dépendances
+/node_modules
+npm-debug.log*
+yarn-error.log
+
+# Build Angular
+/dist
+/tmp
+/out-tsc
+/.angular/cache
+.angular/
+
+# IDE
+/.idea
+/.vscode/*
+!/.vscode/extensions.json
+*.swp
+.DS_Store
+
+# Environnement
+.env
+.env.local
+
+# Logs
+*.log

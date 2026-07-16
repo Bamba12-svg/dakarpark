@@ -1,0 +1,93 @@
+/* ============================================================
+   DakarPark — Design system global
+   Charte : bleu profond + accents verts (dispo) / rouges (occupé)
+   ============================================================ */
+:root {
+  --primary: #0e6b75;
+  --primary-dark: #0a4a52;
+  --primary-light: #16a2b0;
+  --accent: #f4a340;
+  --success: #1f9d55;
+  --success-light: #e6f6ec;
+  --danger: #d64545;
+  --danger-light: #fbeaea;
+  --warning: #e9b949;
+  --ink: #12242b;
+  --muted: #5b7179;
+  --line: #e2ebed;
+  --bg: #f4f8f9;
+  --card: #ffffff;
+  --radius: 16px;
+  --radius-sm: 10px;
+  --shadow: 0 6px 24px rgba(14, 107, 117, 0.08);
+  --shadow-lg: 0 18px 48px rgba(14, 107, 117, 0.16);
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  font-family: var(--font);
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; cursor: pointer; border: none; }
+input, select { font-family: inherit; }
+
+/* ---- Boutons ---- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 13px 22px; border-radius: var(--radius-sm); font-weight: 600; font-size: 15px;
+  transition: transform .12s ease, box-shadow .2s ease, background .2s ease;
+}
+.btn:active { transform: translateY(1px); }
+.btn-primary { background: var(--primary); color: #fff; }
+.btn-primary:hover { background: var(--primary-dark); box-shadow: 0 8px 20px rgba(14,107,117,.28); }
+.btn-accent { background: var(--accent); color: #3a2400; }
+.btn-accent:hover { filter: brightness(1.05); }
+.btn-ghost { background: transparent; color: var(--primary); border: 1.5px solid var(--line); }
+.btn-ghost:hover { border-color: var(--primary); background: #f0f8f9; }
+.btn-block { width: 100%; }
+.btn-lg { padding: 16px 26px; font-size: 16px; }
+
+/* ---- Champs ---- */
+.field { margin-bottom: 18px; }
+.field label { display: block; font-size: 13.5px; font-weight: 600; color: var(--muted); margin-bottom: 7px; }
+.input {
+  width: 100%; padding: 13px 15px; border: 1.5px solid var(--line); border-radius: var(--radius-sm);
+  font-size: 15px; background: #fff; transition: border .2s ease, box-shadow .2s ease;
+}
+.input:focus { outline: none; border-color: var(--primary-light); box-shadow: 0 0 0 4px rgba(22,162,176,.12); }
+.input-group { position: relative; }
+.input-group .icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--muted); }
+.input-group .input { padding-left: 44px; }
+
+/* ---- Cartes ---- */
+.card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid var(--line); }
+
+/* ---- Badges ---- */
+.badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px; border-radius: 999px; font-size: 12.5px; font-weight: 600; }
+.badge-success { background: var(--success-light); color: var(--success); }
+.badge-danger { background: var(--danger-light); color: var(--danger); }
+.badge-muted { background: #eef3f4; color: var(--muted); }
+
+/* ---- Utilitaires ---- */
+.container { max-width: 1180px; margin: 0 auto; padding: 0 22px; }
+.flex { display: flex; }
+.center { align-items: center; }
+.between { justify-content: space-between; }
+.gap-8 { gap: 8px; } .gap-12 { gap: 12px; } .gap-16 { gap: 16px; } .gap-24 { gap: 24px; }
+.text-muted { color: var(--muted); }
+.mt-8 { margin-top: 8px; } .mt-16 { margin-top: 16px; } .mt-24 { margin-top: 24px; } .mt-32 { margin-top: 32px; }
+
+/* ---- Scrollbar douce ---- */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: #cde0e2; border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: #b3d1d4; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.fade-up { animation: fadeUp .4s ease both; }
