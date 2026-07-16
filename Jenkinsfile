@@ -6,6 +6,11 @@
 pipeline {
     agent any
 
+    // Rend disponibles les outils configurés dans « Administrer Jenkins → Tools »
+    tools {
+        nodejs 'Node20'
+    }
+
     environment {
         IMAGE_NAME = 'dakarpark-frontend'
         IMAGE_TAG  = "${env.BUILD_NUMBER}"
@@ -22,7 +27,7 @@ pipeline {
         stage('Installation des dépendances') {
             steps {
                 echo 'Installation des paquets npm...'
-                sh 'npm ci'
+                sh 'npm ci || npm install'
             }
         }
 
