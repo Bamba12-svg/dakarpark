@@ -1,13 +1,19 @@
 # ============================================================
-#  Jenkins + client Docker
-#  L'image officielle Jenkins ne contient pas la commande `docker`.
-#  Le socket monté depuis l'hôte donne accès au démon, mais il faut
-#  également le client en ligne de commande à l'intérieur du conteneur.
+#  Jenkins + client Docker + bibliothèques requises par Node.js
+#  - L'image officielle Jenkins ne contient pas la commande `docker` :
+#    le socket monté depuis l'hôte donne accès au démon, mais il faut
+#    également le client en ligne de commande dans le conteneur.
+#  - Node.js 20 dépend de libatomic1, absente de l'image de base.
 # ============================================================
 
 FROM jenkins/jenkins:lts
 
 USER root
+
+# libatomic1 : requise par les binaires Node.js installés par le plugin NodeJS
+RUN apt-get update && \
+    apt-get install -y libatomic1 && \
+    rm -rf /var/lib/apt/lists/*
 
 # Installation du client Docker (docker-ce-cli)
 RUN apt-get update && \

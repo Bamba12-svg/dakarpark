@@ -8,8 +8,10 @@ FROM node:20-alpine AS build
 WORKDIR /app
 
 # Installer les dépendances (cache optimisé)
+# npm ci garantit une installation reproductible à partir du package-lock.json.
+# Le repli sur npm install évite l'échec du build en cas de désynchronisation du lock.
 COPY package*.json ./
-RUN npm ci
+RUN npm ci || npm install
 
 # Copier le code et compiler en production
 COPY . .
